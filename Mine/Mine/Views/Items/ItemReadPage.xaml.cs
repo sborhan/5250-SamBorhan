@@ -14,9 +14,9 @@ namespace Mine.Views
     public partial class ItemReadPage
  : ContentPage
     {
-        ItemDetailViewModel viewModel;
+        ItemReadViewModel viewModel;
 
-        public ItemReadPage(ItemDetailViewModel viewModel)
+        public ItemReadPage(ItemReadViewModel viewModel)
         {
             InitializeComponent();
 
@@ -33,7 +33,7 @@ namespace Mine.Views
                 Description = "This is an item description."
             };
 
-            viewModel = new ItemDetailViewModel(item);
+            viewModel = new ItemReadViewModel(item);
             BindingContext = viewModel;
         }
     }
