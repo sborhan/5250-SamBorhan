@@ -11,8 +11,7 @@ namespace Mine.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class ItemReadPage
- : ContentPage
+    public partial class ItemReadPage: ContentPage
     {
         ItemReadViewModel viewModel;
 
@@ -35,6 +34,16 @@ namespace Mine.Views
 
             viewModel = new ItemReadViewModel(item);
             BindingContext = viewModel;
+        }
+
+        /// <summary>
+        /// Open the Delete page for this item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void DeleteItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new ItemDeletePage(viewModel)));
         }
     }
 }
