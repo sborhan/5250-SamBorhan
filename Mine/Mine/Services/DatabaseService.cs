@@ -70,9 +70,23 @@ namespace Mine.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Reading an Item using ID from Database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> An Item which matches with the ID or null if not existed in Database</returns>
         public Task<ItemModel> ReadAsync(string id)
         {
-            throw new NotImplementedException();
+            if (id == null)
+            {
+                return null;
+            }
+
+            //Call the Database to read the ID
+            //Using linq syntax to find the first record that has the ID that matches
+            var result = Database.Table<ItemModel>().FirstOrDefaultAsync(m => m.Id.Equals(id));
+
+            return result;
         }
 
         /// <summary>
