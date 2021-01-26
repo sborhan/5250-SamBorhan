@@ -58,9 +58,16 @@ namespace Mine.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<ItemModel>> IndexAsync(bool forceRefresh = false)
+        /// <summary>
+        /// Returns a List of Items existing in the Database
+        /// </summary>
+        /// <param name="forceRefresh"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<ItemModel>> IndexAsync(bool forceRefresh = false)
         {
-            throw new NotImplementedException();
+            // Calls to the ToListAsync method on Database with the Table called ItemModel to get the List of items
+            var result = await Database.Table<ItemModel>().ToListAsync();
+            return result;
         }
     }
 }
